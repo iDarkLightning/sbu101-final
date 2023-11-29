@@ -5,9 +5,9 @@ import { ChevronRight } from "lucide-react";
 
 export default function BackgroundPage(props: { children: React.ReactNode }) {
   return (
-    <main className="flex flex-col items-center mt-20">
+    <main className="flex flex-col items-center mt-12 lg:mt-20">
       <div className="flex flex-col justify-center mx-auto">
-        <div className="flex flex-row gap-16">
+        <div className="flex flex-col gap-16 lg:flex-row px-4">
           <div className="max-w-2xl flex flex-col gap-6 flex-[2]">
             <SectionHeading>Some important statistics</SectionHeading>
             <SectionContent>
@@ -37,16 +37,6 @@ export default function BackgroundPage(props: { children: React.ReactNode }) {
           </div>
           <div className="flex-1">{props.children}</div>
         </div>
-
-        {/* <Link
-          href="/background/how-to-help"
-          className="font-medium bg-stone-900 w-full mx-auto hover:bg-stibe-800 hover:underline border-[0.0125rem] border-stone-700 rounded-md text-neutral-300 transition-all text-xl px-4 py-4 text-center mt-16 flex justify-center gap-2"
-        >
-          Learn how to Help
-          <span>
-            <ChevronRight className="h-8 w-8 -mt-0.5" />
-          </span>
-        </Link> */}
       </div>
     </main>
   );

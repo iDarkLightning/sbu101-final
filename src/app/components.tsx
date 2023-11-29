@@ -2,19 +2,28 @@
 
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Plus } from "lucide-react";
 import Link from "next/link";
 import {
-  useParams,
   useSelectedLayoutSegment,
   useSelectedLayoutSegments,
 } from "next/navigation";
 import React from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./dialog";
+import { createResource } from "./_lib/actions";
 
 export const HeroSplash = () => {
   return (
     <motion.img
-      className="h-[42rem] object-cover flex-1 ml-32 mr-8 rounded-md"
+      className="max-h-[42rem] object-cover flex-1 lg:ml-32 lg:mr-8 m-8 rounded-md"
       src="https://images.unsplash.com/photo-1526168637801-e9f490d6bc04?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       alt="splash"
     />
@@ -24,7 +33,7 @@ export const HeroSplash = () => {
 export const SectionHeading: React.FC<React.PropsWithChildren> = (props) => {
   return (
     <motion.h1
-      className="text-7xl font-bold uppercase font-serif tracking-wide"
+      className="text-3xl lg:text-7xl font-bold uppercase font-serif tracking-wide"
       layoutId="section-heading"
     >
       {props.children}
@@ -77,10 +86,8 @@ export const Stat: React.FC<
 export const Nav = () => {
   const [segment] = useSelectedLayoutSegments();
 
-  console.log(segment);
-
   return (
-    <nav className="flex justify-between gap-4 p-4 mx-16 my-4">
+    <nav className="flex flex-col justify-between gap-4 py-4 px-8 my-4 mx-8 lg:flex-row lg:mx-16 bg-stone-900 rounded-md shadow-lg">
       <p className="font-bold text-xl">Homeless Stigma.</p>
       <ul className="flex gap-4">
         <li
@@ -103,12 +110,56 @@ export const Nav = () => {
         <li
           className={clsx(
             "font-medium",
-            segment === "how-to=help" && "text-orange-700"
+            segment === "resources" && "text-orange-700"
           )}
         >
-          <Link href="/how-to-help">How to Help</Link>
+          <Link href="/resources">Resources</Link>
         </li>
       </ul>
     </nav>
+  );
+};
+
+export const CreateResource = () => {
+  return (
+    <>
+      <Dialog>
+        <DialogTrigger asChild>
+          <button className="px-4 py-2 bg-orange-700 hover:bg-orange-600 rounded-md text-stone-950 font-medium flex items-center gap-2">
+            <span>
+              <Plus />
+            </span>
+            Add
+          </button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Add a Resources</DialogTitle>
+            <DialogDescription>
+              Add a resource to help the homeless community. Please do not add
+              any irrelevant resources. Thank you!
+            </DialogDescription>
+          </DialogHeader>
+          <form action={createResource}>
+            <div className="grid gap-4 py-4">
+              <input type="text" name="name" placeholder="name" />
+              <input type="text" name="url" placeholder="url" />
+              <textarea name="description" placeholder="description" />
+            </div>
+            <DialogFooter>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-orange-700 hover:bg-orange-600 rounded-md text-stone-950 font-medium flex items-center gap-2"
+              >
+                <span>
+                  <Plus />
+                </span>
+                Create
+              </button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };

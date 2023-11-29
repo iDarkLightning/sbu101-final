@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@libsql/client": "^0.4.0-pre.4",
+    "@prisma/adapter-libsql": "^5.6.0",
+    "@prisma/client": "5.6.0",
+    "@radix-ui/react-dialog": "^1.0.5",
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.5",
     "lucide-react": "^0.293.0",
@@ -25,7 +29,9 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "postcss": "^8",
+    "prisma": "^5.6.0",
     "tailwindcss": "^3.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"
   }
 }
