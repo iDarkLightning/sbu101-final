@@ -23,7 +23,7 @@ import { createResource } from "./_lib/actions";
 export const HeroSplash = () => {
   return (
     <motion.img
-      className="max-h-[42rem] object-cover flex-1 lg:ml-32 lg:mr-8 m-8 rounded-md"
+      className="max-h-[42rem] object-cover flex-1 rounded-md"
       src="https://images.unsplash.com/photo-1526168637801-e9f490d6bc04?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       alt="splash"
     />
@@ -33,8 +33,8 @@ export const HeroSplash = () => {
 export const SectionHeading: React.FC<React.PropsWithChildren> = (props) => {
   return (
     <motion.h1
-      className="text-3xl lg:text-7xl font-bold uppercase font-serif tracking-wide"
-      layoutId="section-heading"
+      className="text-5xl lg:text-7xl font-bold uppercase font-serif tracking-wide"
+      // layoutId="section-heading"
     >
       {props.children}
     </motion.h1>
@@ -43,39 +43,27 @@ export const SectionHeading: React.FC<React.PropsWithChildren> = (props) => {
 
 export const SectionContent: React.FC<React.PropsWithChildren> = (props) => {
   return (
-    <motion.div
-      className="max-w-xl flex flex-col gap-4"
-      layoutId="section-content"
-    >
-      {props.children}
-    </motion.div>
+    <motion.div className="flex flex-col gap-4">{props.children}</motion.div>
   );
 };
 
-export const Stat: React.FC<
+export const InfoTab: React.FC<
   React.PropsWithChildren<{
-    count: number;
-    label: string;
-    stat: string;
+    title: string;
+    sub: string;
+    link: string;
   }>
 > = (props) => {
-  const count = new Intl.NumberFormat("en-US").format(props.count);
-  const segment = useSelectedLayoutSegment();
-
   return (
-    <Link href={`/background/${props.stat}`}>
+    <Link href={`/info/${props.link}`}>
       <div
         className={clsx(
-          "p-4 transition-all border-2 rounded-md flex items-center justify-between",
-
-          segment === props.stat
-            ? "bg-orange-700 text-stone-950 border-transparent"
-            : " border-stone-700"
+          "p-4 transition-all border-[0.0125rem] border-stone-800 rounded-md flex items-center justify-between hover:bg-stone-800"
         )}
       >
         <div>
-          <div className="text-3xl font-bold">{count}</div>
-          <div className="text-lg">{props.label}</div>
+          <div className="text-2xl font-semibold">{props.title}</div>
+          <div className={clsx("text-stone-400")}>{props.sub}</div>
         </div>
         <ChevronRight />
       </div>
@@ -87,7 +75,7 @@ export const Nav = () => {
   const [segment] = useSelectedLayoutSegments();
 
   return (
-    <nav className="flex flex-col justify-between gap-4 py-4 px-8 my-4 mx-8 lg:flex-row lg:mx-16 bg-stone-900 rounded-md shadow-lg">
+    <nav className="flex flex-col justify-between gap-4 lg:flex-row py-4 sticky top-0 bg-stone-950/60 backdrop-blur-sm">
       <p className="font-bold text-xl">Homeless Stigma.</p>
       <ul className="flex gap-4">
         <li
@@ -102,10 +90,10 @@ export const Nav = () => {
         <li
           className={clsx(
             "font-medium",
-            segment === "background" && "text-orange-700"
+            segment === "info" && "text-orange-700"
           )}
         >
-          <Link href="/background">Background</Link>
+          <Link href="/info">Information</Link>
         </li>
         <li
           className={clsx(
@@ -161,5 +149,23 @@ export const CreateResource = () => {
         </DialogContent>
       </Dialog>
     </>
+  );
+};
+
+export const ContentWrapper: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <div
+      className={clsx(
+        "max-w-[100rem] py-6 px-4 md:mx-auto md:w-[80%] lg:w-[85%] 2xl:w-[90%]",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
   );
 };

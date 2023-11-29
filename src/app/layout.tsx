@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Nav } from "./components";
+import { ContentWrapper, Nav } from "./components";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const bigilla = localFont({
@@ -23,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${bigilla.variable}`}>
-        <Nav />
-        {children}
+        <ContentWrapper>
+          <Nav />
+          <div className="my-4 mx-8 lg:mx-16 lg:my-16">{children}</div>
+        </ContentWrapper>
       </body>
     </html>
   );
