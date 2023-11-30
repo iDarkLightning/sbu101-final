@@ -1,32 +1,42 @@
-import { MoveLeft, MoveRight } from "lucide-react";
+import clsx from "clsx";
+import { ChevronRight, MoveLeft, MoveRight } from "lucide-react";
 import Link from "next/link";
 
 export default function HomelessCountPage() {
   return (
     <div className="prose text-white">
-      <h2 className="text-stone-100">Lorem ipsum dolor</h2>
+      <h2 className="text-stone-100">State of Homelessness in NYC</h2>
+      <div
+        className={clsx(
+          "p-4 transition-all border-[0.0125rem] border-stone-700 bg-stone-900 rounded-md flex items-center justify-between"
+        )}
+      >
+        <div>
+          <div className="text-2xl font-semibold">87,907</div>
+          <div className={clsx("text-stone-400")}>
+            Homeless people sleeping in NYC&apos;s municipal shelter system. A
+            68% increase in the past decade.
+          </div>
+        </div>
+      </div>
       <p className="text-stone-400">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-        deserunt possimus soluta, ipsum id tempore expedita sint quaerat
-        exercitationem eligendi laborum sed. Fuga sapiente beatae aspernatur
-        deserunt ducimus. Dolor dignissimos architecto repellat exercitationem
-        quam, consequatur voluptates fuga totam eius doloribus!
+        Approximately 56 percent of heads of household in shelters are Black, 32
+        percent are Hispanic/Latinx, 7 percent are White, less than 1 percent
+        are Asian-American or Native American, and 4 percent are of unknown
+        race/ethnicity
       </p>
-      <h2 className="text-stone-100">Different Lorem ipsum dolor</h2>
+      <h3 className="text-stone-100">Public Surveys on Homeless Policy</h3>
       <p className="text-stone-400">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-        deserunt possimus soluta, ipsum id tempore expedita sint quaerat
-        exercitationem eligendi laborum sed. Fuga sapiente beatae aspernatur
-        deserunt ducimus. Dolor dignissimos architecto repellat exercitationem
-        quam, consequatur voluptates fuga totam eius doloribus!
+        Research shows 79% of Americans believe people should be allowed to live
+        in their cars without threat of criminal prosecution. Additionally, 68%
+        believe homeless people should be free from so-called “sweeps” led by
+        police and sanitation departments.
       </p>
-      <h2 className="text-stone-100">Different Lorem ipsum dolor sit amet</h2>
       <p className="text-stone-400">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-        deserunt possimus soluta, ipsum id tempore expedita sint quaerat
-        exercitationem eligendi laborum sed. Fuga sapiente beatae aspernatur
-        deserunt ducimus. Dolor dignissimos architecto repellat exercitationem
-        quam, consequatur voluptates fuga totam eius doloribus!
+        When it comes to policy prescriptions, 82% support expanding public
+        mental health services, and 75% support supportive housing and more
+        navigation centers. Moreover, the research found that about two in three
+        of those surveyed support rent control.
       </p>
       <div className="flex justify-between w-full">
         <Link

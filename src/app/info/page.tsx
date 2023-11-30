@@ -6,9 +6,7 @@ import { ChevronRight, MoveRight } from "lucide-react";
 export default function BackgroundPage() {
   return (
     <>
-      <h1 className="text-5xl uppercase font-semibold font-serif">
-        Homelessness in Detail
-      </h1>
+      <h1 className="text-5xl font-semibold">Homelessness in Detail</h1>
       <SectionContent>
         <p className="text-stone-300 text-base leading-6">
           Despite the multifaceted causes of homelessness, there is a web of

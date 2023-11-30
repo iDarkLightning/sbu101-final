@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${bigilla.variable}`}>
         <ContentWrapper>
           <Nav />
-          <div className="my-4 mx-8 lg:mx-16 lg:my-16">{children}</div>
+          <div className="m-4 lg:m-16">{children}</div>
         </ContentWrapper>
       </body>
     </html>
